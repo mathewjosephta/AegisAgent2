@@ -22,7 +22,7 @@ from xgboost import XGBClassifier
 
 
 def normalize_label(value: object) -> str:
-    label = re.sub(r"\\s+", " ", str(value)).strip().upper()
+    label = re.sub(r"\s+", " ", str(value)).strip().upper()
     return "BENIGN" if label == "BENIGN" else "ATTACK"
 
 
@@ -44,7 +44,7 @@ def load_dataset(data_dir: Path, max_rows: int, seed: int):
         except Exception as exc:
             print(f"Skipping {file}: could not parse CSV ({exc})")
             continue
-        frame.columns = [str(c).replace("\\ufeff", "").strip() for c in frame.columns]
+        frame.columns = [str(c).replace("\ufeff", "").strip() for c in frame.columns]
         label_cols = [c for c in frame.columns if c.lower() == "label"]
         if not label_cols:
             print(f"Skipping {file}: no Label column")
