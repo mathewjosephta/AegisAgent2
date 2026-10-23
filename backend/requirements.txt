@@ -3,3 +3,7 @@ uvicorn[standard]>=0.29
 scapy>=2.5        # only needed for AEGIS_MODE=live
 pytest>=8.0
 httpx>=0.27       # used by FastAPI's TestClient in tests
+pandas>=2.1
+numpy>=1.26
+scikit-learn>=1.4
+joblib>=1.3
